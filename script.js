@@ -25,32 +25,20 @@ document.querySelector('.check').addEventListener('click', function () {
       highScore = score;
       document.querySelector('.highscore').textContent = highScore;
     }
-    //guess is lower
-  } else if (guess > secretNumber) {
+  } else if (guess !== secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent =
-        'Your guess is higher 📈';
+        guess > secretNumber
+          ? 'Your guess is higher 📈'
+          : 'Your guess is lower 📉';
       score--;
     } else {
       document.querySelector('.message').textContent =
         'Sorry you lose the game 😭';
       document.querySelector('body').style.backgroundColor = 'red';
     }
-
-    document.querySelector('.score').textContent = score;
-    //guess is lower
-  } else if (guess < secretNumber) {
-    if (score > 1) {
-      document.querySelector('.message').textContent = 'Your guess is lower 📉';
-      score--;
-    } else {
-      document.querySelector('.message').textContent =
-        'Sorry you lose the game 😭';
-      document.querySelector('body').style.backgroundColor = 'red';
-    }
-
-    document.querySelector('.score').textContent = score;
   }
+  document.querySelector('.score').textContent = score;
 });
 //Again button resetting
 document.querySelector('.again').addEventListener('click', function () {
